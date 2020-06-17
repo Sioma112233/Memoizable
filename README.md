@@ -115,7 +115,7 @@ static Memoizable<int, int, int> Add() => _ => (a, b) => a + b;
 ```
 
 
-# Prequesites for memoizing a function
+# Prerequisites for memoizing a function
 Behind the scenes a memoized function will use some `Dictionary<>` for caching, and in order for the dictionary to work properly, it's key type has to properly implement `Equals()` and `GetHashCode()`.
 
 For your function that means that all the input parameter's types should properly implement `Equals()` and `GetHashCode()`. 
