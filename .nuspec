@@ -6,7 +6,7 @@
     <description>Memoizable - Library for easily creating memoizable functions. more info at: https://github.com/Sioma112233/Memoizable</description>
     <authors>sioma112233</authors>
     <owners>sioma112233</owners>
-    <licenseUrl>https://github.com/Sioma112233/Memoizable/blob/master/LICENSE</licenseUrl>
+    <license type="expression">MIT</license>
     <projectUrl>https://github.com/Sioma112233/Memoizable</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary>Memoizable - Library for easily creating memoizable functions</summary>
