@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package  xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>    
+    <id>Memoizable</id>
+    <version>1.0.0</version>
+    <description>Memoizable - Library for easily creating memoizable functions. more info at: https://github.com/Sioma112233/Memoizable</description>
+    <authors>sioma112233</authors>
+    <owners>sioma112233</owners>
+    <licenseUrl>https://github.com/Sioma112233/Memoizable/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Sioma112233/Memoizable</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>Memoizable - Library for easily creating memoizable functions</summary>
+  </metadata>
+  <files>
+    <file src="README.md" target="" />
+  </files>
+</package>
