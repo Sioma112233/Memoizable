@@ -26,7 +26,7 @@ namespace Memoization
 
 	public static class Memoizable
 	{
-		#region Simple() overloads
+		#region Normal() overloads
 		
 		public static Func<A, R> Normal<A, R>(this Memoizable<A, R> f)
 		{
