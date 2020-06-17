@@ -1,5 +1,6 @@
 # Memoizable
-Memoizable is .Net library that helps create [memoizable](https://en.wikipedia.org/wiki/Memoization) functions as easily as possible
+Memoizable is .Net library that helps create [memoizable](https://en.wikipedia.org/wiki/Memoization) functions as easily as possible.
+
 NuGet Package: https://www.nuget.org/packages/Memoizable/
 
 ## What is Memoization?
@@ -106,8 +107,8 @@ static Memoizable<int, int, int, long> Example() => self => (a, b, c) => {
 };
 ```
 
-This example is similar to the single-param "Fibonacci" implementation, the only big change is that know our return type for the `Example` function is `Memoizable<int, int, int, long>`
-where like with `Func<>` the last type is the return-type.
+This example is similar to the single-param "Fibonacci" implementation, the only big change is that now, our return type for the `Example` function is `Memoizable<int, int, int, long>`
+where, similarly to `Func<>`, the last type is the return-type.
 
 ## Non-Recursive function
 This is just the same, you can keep the `self` reference or replace it with `_`
