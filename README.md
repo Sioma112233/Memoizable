@@ -1,5 +1,5 @@
 # Memoizable
-Memoizable is .Net library that helps create [memoizable](https://en.wikipedia.org/wiki/Memoization) function as easily as possible
+Memoizable is .Net library that helps create [memoizable](https://en.wikipedia.org/wiki/Memoization) functions as easily as possible
 
 ## What is Memoization?
 From [Wikipedia](https://en.wikipedia.org/wiki/Memoization):
