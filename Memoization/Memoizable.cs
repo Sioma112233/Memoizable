@@ -144,9 +144,9 @@ namespace Memoization
 		
 		#region Memoized() overloads
 		
-		public static Func<A, R> Memoized<A, R>(this Memoizable<A, R> f)
+		public static Func<A, R> Memoized<A, R>(this Memoizable<A, R> f, int maxSize)
 		{
-			var map = new Dictionary<A, R>();
+			var map = new LruDict<A, R>(maxSize);
 			Func<A, R> memoized = null;
 			Func<A, R> g = f(input => memoized(input));
 
@@ -155,9 +155,9 @@ namespace Memoization
 			return memoized;
 		}
 
-		public static Func<A1, A2, R> Memoized<A1, A2, R>(this Memoizable<A1, A2, R> f)
+		public static Func<A1, A2, R> Memoized<A1, A2, R>(this Memoizable<A1, A2, R> f, int maxSize)
 		{
-			var map = new Dictionary<(A1, A2), R>();
+			var map = new LruDict<(A1, A2), R>(maxSize);
 			Func<(A1, A2), R> memoized = null;
 			Func<(A1, A2), R> g = tuple => f((a1, a2) => memoized((a1, a2)))(tuple.Item1, tuple.Item2);
 
@@ -166,9 +166,9 @@ namespace Memoization
 			return (a1, a2) => memoized((a1, a2));
 		}
 		
-		public static Func<A1, A2, A3, R> Memoized<A1, A2, A3, R>(this Memoizable<A1, A2, A3, R> f)
+		public static Func<A1, A2, A3, R> Memoized<A1, A2, A3, R>(this Memoizable<A1, A2, A3, R> f, int maxSize)
 		{
-			var map = new Dictionary<(A1, A2, A3), R>();
+			var map = new LruDict<(A1, A2, A3), R>(maxSize);
 			Func<(A1, A2, A3), R> memoized = null;
 			Func<(A1, A2, A3), R> g = tuple => f((a1, a2, a3) => memoized((a1, a2, a3)))(tuple.Item1, tuple.Item2, tuple.Item3);
 
@@ -177,9 +177,9 @@ namespace Memoization
 			return (a1, a2, a3) => memoized((a1, a2, a3));
 		}
 		
-		public static Func<A1, A2, A3, A4, R> Memoized<A1, A2, A3, A4, R>(this Memoizable<A1, A2, A3, A4, R> f)
+		public static Func<A1, A2, A3, A4, R> Memoized<A1, A2, A3, A4, R>(this Memoizable<A1, A2, A3, A4, R> f, int maxSize)
 		{
-			var map = new Dictionary<(A1, A2, A3, A4), R>();
+			var map = new LruDict<(A1, A2, A3, A4), R>(maxSize);
 			Func<(A1, A2, A3, A4), R> memoized = null;
 			Func<(A1, A2, A3, A4), R> g = tuple => f((a1, a2, a3, a4) => memoized((a1, a2, a3, a4)))(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4);
 
@@ -188,9 +188,9 @@ namespace Memoization
 			return (a1, a2, a3, a4) => memoized((a1, a2, a3, a4));
 		}
 		
-		public static Func<A1, A2, A3, A4, A5, R> Memoized<A1, A2, A3, A4, A5, R>(this Memoizable<A1, A2, A3, A4, A5, R> f)
+		public static Func<A1, A2, A3, A4, A5, R> Memoized<A1, A2, A3, A4, A5, R>(this Memoizable<A1, A2, A3, A4, A5, R> f, int maxSize)
 		{
-			var map = new Dictionary<(A1, A2, A3, A4, A5), R>();
+			var map = new LruDict<(A1, A2, A3, A4, A5), R>(maxSize);
 			Func<(A1, A2, A3, A4, A5), R> memoized = null;
 			Func<(A1, A2, A3, A4, A5), R> g = tuple => f((a1, a2, a3, a4, a5) => memoized((a1, a2, a3, a4, a5)))(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5);
 
@@ -199,9 +199,9 @@ namespace Memoization
 			return (a1, a2, a3, a4, a5) => memoized((a1, a2, a3, a4, a5));
 		}
 		
-		public static Func<A1, A2, A3, A4, A5, A6, R> Memoized<A1, A2, A3, A4, A5, A6, R>(this Memoizable<A1, A2, A3, A4, A5, A6, R> f)
+		public static Func<A1, A2, A3, A4, A5, A6, R> Memoized<A1, A2, A3, A4, A5, A6, R>(this Memoizable<A1, A2, A3, A4, A5, A6, R> f, int maxSize)
 		{
-			var map = new Dictionary<(A1, A2, A3, A4, A5, A6), R>();
+			var map = new LruDict<(A1, A2, A3, A4, A5, A6), R>(maxSize);
 			Func<(A1, A2, A3, A4, A5, A6), R> memoized = null;
 			Func<(A1, A2, A3, A4, A5, A6), R> g = tuple => f((a1, a2, a3, a4, a5, a6) => memoized((a1, a2, a3, a4, a5, a6)))(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5, tuple.Item6);
 
@@ -210,9 +210,9 @@ namespace Memoization
 			return (a1, a2, a3, a4, a5, a6) => memoized((a1, a2, a3, a4, a5, a6));
 		}
 		
-		public static Func<A1, A2, A3, A4, A5, A6, A7, R> Memoized<A1, A2, A3, A4, A5, A6, A7, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, R> f)
+		public static Func<A1, A2, A3, A4, A5, A6, A7, R> Memoized<A1, A2, A3, A4, A5, A6, A7, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, R> f, int maxSize)
 		{
-			var map = new Dictionary<(A1, A2, A3, A4, A5, A6, A7), R>();
+			var map = new LruDict<(A1, A2, A3, A4, A5, A6, A7), R>(maxSize);
 			Func<(A1, A2, A3, A4, A5, A6, A7), R> memoized = null;
 			Func<(A1, A2, A3, A4, A5, A6, A7), R> g = tuple => f((a1, a2, a3, a4, a5, a6, a7) => memoized((a1, a2, a3, a4, a5, a6, a7)))(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5, tuple.Item6, tuple.Item7);
 
@@ -221,9 +221,9 @@ namespace Memoization
 			return (a1, a2, a3, a4, a5, a6, a7) => memoized((a1, a2, a3, a4, a5, a6, a7));
 		}
 		
-		public static Func<A1, A2, A3, A4, A5, A6, A7, A8, R> Memoized<A1, A2, A3, A4, A5, A6, A7, A8, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, A8, R> f)
+		public static Func<A1, A2, A3, A4, A5, A6, A7, A8, R> Memoized<A1, A2, A3, A4, A5, A6, A7, A8, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, A8, R> f, int maxSize)
 		{
-			var map = new Dictionary<(A1, A2, A3, A4, A5, A6, A7, A8), R>();
+			var map = new LruDict<(A1, A2, A3, A4, A5, A6, A7, A8), R>(maxSize);
 			Func<(A1, A2, A3, A4, A5, A6, A7, A8), R> memoized = null;
 			Func<(A1, A2, A3, A4, A5, A6, A7, A8), R> g = tuple => f((a1, a2, a3, a4, a5, a6, a7, a8) => memoized((a1, a2, a3, a4, a5, a6, a7, a8)))(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5, tuple.Item6, tuple.Item7, tuple.Item8);
 
@@ -232,9 +232,9 @@ namespace Memoization
 			return (a1, a2, a3, a4, a5, a6, a7, a8) => memoized((a1, a2, a3, a4, a5, a6, a7, a8));
 		}
 		
-		public static Func<A1, A2, A3, A4, A5, A6, A7, A8, A9, R> Memoized<A1, A2, A3, A4, A5, A6, A7, A8, A9, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, A8, A9, R> f)
+		public static Func<A1, A2, A3, A4, A5, A6, A7, A8, A9, R> Memoized<A1, A2, A3, A4, A5, A6, A7, A8, A9, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, A8, A9, R> f, int maxSize)
 		{
-			var map = new Dictionary<(A1, A2, A3, A4, A5, A6, A7, A8, A9), R>();
+			var map = new LruDict<(A1, A2, A3, A4, A5, A6, A7, A8, A9), R>(maxSize);
 			Func<(A1, A2, A3, A4, A5, A6, A7, A8, A9), R> memoized = null;
 			Func<(A1, A2, A3, A4, A5, A6, A7, A8, A9), R> g = tuple => f((a1, a2, a3, a4, a5, a6, a7, a8, a9) => memoized((a1, a2, a3, a4, a5, a6, a7, a8, a9)))(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5, tuple.Item6, tuple.Item7, tuple.Item8, tuple.Item9);
 
@@ -243,9 +243,9 @@ namespace Memoization
 			return (a1, a2, a3, a4, a5, a6, a7, a8, a9) => memoized((a1, a2, a3, a4, a5, a6, a7, a8, a9));
 		}
 		
-		public static Func<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R> Memoized<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R> f)
+		public static Func<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R> Memoized<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R> f, int maxSize)
 		{
-			var map = new Dictionary<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10), R>();
+			var map = new LruDict<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10), R>(maxSize);
 			Func<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10), R> memoized = null;
 			Func<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10), R> g = tuple => f((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10) => memoized((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10)))(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5, tuple.Item6, tuple.Item7, tuple.Item8, tuple.Item9, tuple.Item10);
 
@@ -254,9 +254,9 @@ namespace Memoization
 			return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10) => memoized((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10));
 		}
 		
-		public static Func<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R> Memoized<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R> f)
+		public static Func<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R> Memoized<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R> f, int maxSize)
 		{
-			var map = new Dictionary<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11), R>();
+			var map = new LruDict<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11), R>(maxSize);
 			Func<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11), R> memoized = null;
 			Func<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11), R> g = tuple => f((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11) => memoized((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)))(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5, tuple.Item6, tuple.Item7, tuple.Item8, tuple.Item9, tuple.Item10, tuple.Item11);
 
@@ -265,9 +265,9 @@ namespace Memoization
 			return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11) => memoized((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11));
 		}
 		
-		public static Func<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R> Memoized<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R> f)
+		public static Func<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R> Memoized<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R> f, int maxSize)
 		{
-			var map = new Dictionary<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12), R>();
+			var map = new LruDict<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12), R>(maxSize);
 			Func<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12), R> memoized = null;
 			Func<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12), R> g = tuple => f((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12) => memoized((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12)))(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5, tuple.Item6, tuple.Item7, tuple.Item8, tuple.Item9, tuple.Item10, tuple.Item11, tuple.Item12);
 
@@ -276,9 +276,9 @@ namespace Memoization
 			return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12) => memoized((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12));
 		}
 		
-		public static Func<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R> Memoized<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R> f)
+		public static Func<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R> Memoized<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R> f, int maxSize)
 		{
-			var map = new Dictionary<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13), R>();
+			var map = new LruDict<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13), R>(maxSize);
 			Func<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13), R> memoized = null;
 			Func<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13), R> g = tuple => f((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13) => memoized((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13)))(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5, tuple.Item6, tuple.Item7, tuple.Item8, tuple.Item9, tuple.Item10, tuple.Item11, tuple.Item12, tuple.Item13);
 
@@ -287,9 +287,9 @@ namespace Memoization
 			return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13) => memoized((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13));
 		}
 		
-		public static Func<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R> Memoized<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R> f)
+		public static Func<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R> Memoized<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R> f, int maxSize)
 		{
-			var map = new Dictionary<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14), R>();
+			var map = new LruDict<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14), R>(maxSize);
 			Func<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14), R> memoized = null;
 			Func<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14), R> g = tuple => f((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14) => memoized((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14)))(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5, tuple.Item6, tuple.Item7, tuple.Item8, tuple.Item9, tuple.Item10, tuple.Item11, tuple.Item12, tuple.Item13, tuple.Item14);
 
@@ -298,9 +298,9 @@ namespace Memoization
 			return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14) => memoized((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14));
 		}
 		
-		public static Func<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R> Memoized<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R> f)
+		public static Func<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R> Memoized<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R> f, int maxSize)
 		{
-			var map = new Dictionary<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15), R>();
+			var map = new LruDict<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15), R>(maxSize);
 			Func<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15), R> memoized = null;
 			Func<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15), R> g = tuple => f((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15) => memoized((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15)))(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5, tuple.Item6, tuple.Item7, tuple.Item8, tuple.Item9, tuple.Item10, tuple.Item11, tuple.Item12, tuple.Item13, tuple.Item14, tuple.Item15);
 
@@ -309,9 +309,9 @@ namespace Memoization
 			return (a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15) => memoized((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15));
 		}
 		
-		public static Func<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R> Memoized<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R> f)
+		public static Func<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R> Memoized<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R>(this Memoizable<A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R> f, int maxSize)
 		{
-			var map = new Dictionary<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16), R>();
+			var map = new LruDict<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16), R>(maxSize);
 			Func<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16), R> memoized = null;
 			Func<(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16), R> g = tuple => f((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16) => memoized((a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16)))(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5, tuple.Item6, tuple.Item7, tuple.Item8, tuple.Item9, tuple.Item10, tuple.Item11, tuple.Item12, tuple.Item13, tuple.Item14, tuple.Item15, tuple.Item16);
 
@@ -322,7 +322,7 @@ namespace Memoization
 		
 		#endregion
 		
-		private static Func<A, R> MemoizeFunc<A, R>(Func<A, R> f, Dictionary<A, R> map)
+		private static Func<A, R> MemoizeFunc<A, R>(Func<A, R> f, IDictionary<A, R> map)
 		{
 			return input => {
 				if (map.TryGetValue(input, out var value))
